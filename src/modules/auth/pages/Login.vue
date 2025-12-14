@@ -14,56 +14,44 @@ const formIsFilled = computed(() => {
 
 </script>
 <template>
-    <div class="login-page">
-        <div class="login-page__container">
-            <div class="login-page__img-logo-container">
-                <img :src="PowerIconLogo" alt="icone-powerlifting" class="login-page__logo-icon"></img>
-            </div>
-            <h1 class="login-page__title">PowerTrack</h1>
-
-            <form class="login-page__form" @submit.prevent="handleLogin">
-                <div class="login-page__form-label-container">
-                    <i class="fas fa-envelope icon"></i>
-                    <label class="login-page__label">Email</label>
-                </div>
-                <input class="login-page__input" type="email" v-model="email" />
-
-                <div class="login-page__form-label-container">
-                    <i class="fas fa-lock icon"></i>
-                    <label class="login-page__label">Senha</label>
-                </div>
-                <input class="login-page__input" type="password" v-model="password" />
-
-                <button class="login-page__button" type="submit" :disabled="!formIsFilled">Entrar</button>
-                <div class="login-page__actions-footer">
-                    <span>Novo por aqui? </span>
-                    <a href="#" class="login-page__link--secondary">Cadastre-se</a>
-                </div>
-
-
-                <div class="login-page__select-role">
-                    <span>Sou:</span>
-                    <div class="login-page__select-role__options">
-                        <span @click="role = 'Coach'" :class="{ 'active': role === 'Coach' }">Treinador</span>
-                        <span @click="role = 'Athlete'" :class="{ 'active': role === 'Athlete' }">Atleta</span>
-                    </div>
-                </div>
-                <div class="login-page__form-forgot-password-container">
-                    <a href="#">Esqueceu a senha?</a>
-                </div>
-            </form>
+    <form class="login-page__form" @submit.prevent="handleLogin">
+        <div class="login-page__form-label-container">
+            <i class="fas fa-envelope icon"></i>
+            <label class="login-page__label">Email</label>
         </div>
-    </div>
+        <input class="login-page__input" type="email" v-model="email" />
+
+        <div class="login-page__form-label-container">
+            <i class="fas fa-lock icon"></i>
+            <label class="login-page__label">Senha</label>
+        </div>
+        <input class="login-page__input" type="password" v-model="password" />
+
+        <button class="login-page__button" type="submit" :disabled="!formIsFilled">Entrar</button>
+        <div class="login-page__actions-footer">
+            <span>Novo por aqui? </span>
+            <router-link to="/register" class="login-page__link--secondary">Cadastre-se</router-link>
+        </div>
+
+
+        <div class="login-page__select-role">
+            <span>Sou:</span>
+            <div class="login-page__select-role__options">
+                <span @click="role = 'Coach'" :class="{ 'active': role === 'Coach' }">Treinador</span>
+                <span @click="role = 'Athlete'" :class="{ 'active': role === 'Athlete' }">Atleta</span>
+            </div>
+        </div>
+        <div class="login-page__form-forgot-password-container">
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+    </form>
 </template>
 <style scoped lang="scss">
 .login-page {
     background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.65),
-      rgba(0, 0, 0, 0.65)
-    ),
-    url('@/assets/victor-freitas-nA0UDNDbxys-unsplash.jpg')
-      center / cover no-repeat;
+        linear-gradient(rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)),
+        url('@/assets/victor-freitas-nA0UDNDbxys-unsplash.jpg') center / cover no-repeat;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -90,17 +78,10 @@ const formIsFilled = computed(() => {
 
     &__logo-icon {
         width: 80px;
-        /* Define um tamanho fixo */
         height: 80px;
-        /* Garante que seja quadrado para o círculo */
         object-fit: cover;
-        /* Garante que a imagem preencha sem distorcer (se necessário) */
         border-radius: 50%;
-        /* Torna o elemento circular */
         margin-bottom: 1rem;
-        /* Espaçamento entre o ícone e o título */
-        /* Opcional: Adicionar uma borda sutil se a imagem não for circular por si só */
-        // border: 2px solid #FFF; 
     }
 
     &__img-logo-container {
