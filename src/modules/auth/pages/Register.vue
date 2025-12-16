@@ -107,7 +107,7 @@
 
     .btn--primary {
         background-color: #5a7cff; 
-        color: #000;
+        color: #FFF;
         margin-top: 1rem;
         
         &:hover {
