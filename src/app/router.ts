@@ -5,7 +5,7 @@ import Register from '../modules/auth/pages/Register.vue'
 import CoachDashboard from '../modules/coach/pages/CoachDashboard.vue'
 import { useAuthStore } from '../modules/auth/store/authStore'
 import Dashboard from '../modules/coach/pages/Dashboard.vue'
-import Athletes from '../modules/coach/pages/Athletes.vue'
+import Athletes from '../modules/coach/pages/Athletes/Athletes.vue'
 
 const routes = [
     {
