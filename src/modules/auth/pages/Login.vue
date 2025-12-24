@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, type Ref, computed } from "vue"
 import PowerIconLogo from "@/assets/powerlifting_15180074.png"
+import { useAuthStore } from "../store/authStore"
+import api from "@/api/axios"
+import { useRouter } from "vue-router"
 
 type RoleType = "Coach" | "Athlete"
 
@@ -11,6 +14,39 @@ const role: Ref<RoleType | null> = ref(null)
 const formIsFilled = computed(() => {
     return email.value !== "" && password.value !== "" && role.value !== null
 })
+
+const router = useRouter()
+
+
+async function handleLogin() {
+    if (role.value === "Coach") {
+        const params = new URLSearchParams()
+        params.append("username", email.value)
+        params.append("password", password.value)
+        params.append("grant_type", "password")
+
+        params.append('scope', ''); 
+        params.append('client_id', 'string'); 
+        params.append('client_secret', 'string');
+
+        try {
+            const response = await api.post("/auth/login", params,
+                {
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                }
+            )
+            console.log(response.data)
+            const authStore = useAuthStore()
+            authStore.setToken(response.data["access_token"])
+            router.push("/coach/dashboard")
+        } catch (error) {
+            console.error("Erro ao fazer login do treinador:", error)
+            // Lidar com erros de login, como exibir uma mensagem ao usuário
+        }
+    }
+}
 
 </script>
 <template>
