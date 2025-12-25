@@ -6,6 +6,7 @@ import CoachDashboard from '../modules/coach/pages/CoachDashboard.vue'
 import { useAuthStore } from '../modules/auth/store/authStore'
 import Dashboard from '../modules/coach/pages/Dashboard.vue'
 import Athletes from '../modules/coach/pages/Athletes/Athletes.vue'
+import CreateFormAthlete from '../modules/coach/pages/Athletes/CreateFormAthlete.vue'
 
 const routes = [
     {
@@ -41,6 +42,11 @@ const routes = [
                 path: 'athletes',
                 name: 'athletes',
                 component: Athletes
+            },
+            {
+                path: 'athletes/create',
+                name: 'create-athlete',
+                component: CreateFormAthlete
             }
         ]
     }

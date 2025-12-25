@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from 'vue';
 import Loading from '../../../../components/Loading.vue';
 import { useAthletes } from '../../composables/useAthletes';
 import ListAthletes from './ListAthletes.vue';
+import router from '../../../../app/router';
 
 // const isLoading = ref(true);
 const { athletes, fetchAthletes, error, isLoading } = useAthletes();
@@ -16,6 +17,10 @@ watch(isLoading, (newVal) => {
         console.log('Athletes loaded:', athletes.value);
     }
 });
+
+function navigateToFormAthlete() {
+    router.push('/coach/dashboard/athletes/create');
+}
 </script>
 
 <template>
@@ -30,7 +35,7 @@ watch(isLoading, (newVal) => {
             </div>
             <button class="athletes-page__controls__search-button">Buscar</button>
             <div class="athletes-page__controls__container-create-athlete-button">
-                <button class="athletes-page__button-create-athlete">
+                <button class="athletes-page__button-create-athlete" @click="navigateToFormAthlete()">
                     <span class="athletes-page__button-create-athlete__plus">+</span>
                     Cadastrar Novo Atleta
                 </button>
